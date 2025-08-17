@@ -1,0 +1,14 @@
+/home/djoker/code/cpp/GlStuff/build/CMakeFiles/edit_cache.dir
+/home/djoker/code/cpp/GlStuff/build/CMakeFiles/rebuild_cache.dir
+/home/djoker/code/cpp/GlStuff/build/core/CMakeFiles/core.dir
+/home/djoker/code/cpp/GlStuff/build/core/CMakeFiles/edit_cache.dir
+/home/djoker/code/cpp/GlStuff/build/core/CMakeFiles/rebuild_cache.dir
+/home/djoker/code/cpp/GlStuff/build/main/CMakeFiles/main.dir
+/home/djoker/code/cpp/GlStuff/build/main/CMakeFiles/edit_cache.dir
+/home/djoker/code/cpp/GlStuff/build/main/CMakeFiles/rebuild_cache.dir
+/home/djoker/code/cpp/GlStuff/build/teste_scene/CMakeFiles/teste_scene.dir
+/home/djoker/code/cpp/GlStuff/build/teste_scene/CMakeFiles/edit_cache.dir
+/home/djoker/code/cpp/GlStuff/build/teste_scene/CMakeFiles/rebuild_cache.dir
+/home/djoker/code/cpp/GlStuff/build/teste_shadow/CMakeFiles/teste_shadow.dir
+/home/djoker/code/cpp/GlStuff/build/teste_shadow/CMakeFiles/edit_cache.dir
+/home/djoker/code/cpp/GlStuff/build/teste_shadow/CMakeFiles/rebuild_cache.dir

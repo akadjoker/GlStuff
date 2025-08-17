@@ -1,0 +1,102 @@
+[
+{
+  "directory": "/home/djoker/code/cpp/GlStuff/build",
+  "command": "/usr/bin/c++ -I/home/djoker/code/cpp/GlStuff/core/include -I/home/djoker/code/cpp/GlStuff/core/src  -fexceptions -frtti -fno-strict-aliasing -O3 -march=native -mtune=native -O3 -DNDEBUG -Wextra -Wall -Wno-sign-compare -Wno-missing-field-initializers -Wundef -Wuninitialized -Wunused -Wno-unused-parameter -Wwrite-strings -Wchar-subscripts -funsigned-char -std=c++17 -Winvalid-pch -x c++-header -include /home/djoker/code/cpp/GlStuff/build/core/CMakeFiles/core.dir/cmake_pch.hxx -o core/CMakeFiles/core.dir/cmake_pch.hxx.gch -c /home/djoker/code/cpp/GlStuff/build/core/CMakeFiles/core.dir/cmake_pch.hxx.cxx",
+  "file": "/home/djoker/code/cpp/GlStuff/build/core/CMakeFiles/core.dir/cmake_pch.hxx.cxx"
+},
+{
+  "directory": "/home/djoker/code/cpp/GlStuff/build",
+  "command": "/usr/bin/c++ -I/home/djoker/code/cpp/GlStuff/core/include -I/home/djoker/code/cpp/GlStuff/core/src  -fexceptions -frtti -fno-strict-aliasing -O3 -march=native -mtune=native -O3 -DNDEBUG -Wextra -Wall -Wno-sign-compare -Wno-missing-field-initializers -Wundef -Wuninitialized -Wunused -Wno-unused-parameter -Wwrite-strings -Wchar-subscripts -funsigned-char -std=c++17 -Winvalid-pch -include /home/djoker/code/cpp/GlStuff/build/core/CMakeFiles/core.dir/cmake_pch.hxx -o core/CMakeFiles/core.dir/src/Batch.cpp.o -c /home/djoker/code/cpp/GlStuff/core/src/Batch.cpp",
+  "file": "/home/djoker/code/cpp/GlStuff/core/src/Batch.cpp"
+},
+{
+  "directory": "/home/djoker/code/cpp/GlStuff/build",
+  "command": "/usr/bin/c++ -I/home/djoker/code/cpp/GlStuff/core/include -I/home/djoker/code/cpp/GlStuff/core/src  -fexceptions -frtti -fno-strict-aliasing -O3 -march=native -mtune=native -O3 -DNDEBUG -Wextra -Wall -Wno-sign-compare -Wno-missing-field-initializers -Wundef -Wuninitialized -Wunused -Wno-unused-parameter -Wwrite-strings -Wchar-subscripts -funsigned-char -std=c++17 -Winvalid-pch -include /home/djoker/code/cpp/GlStuff/build/core/CMakeFiles/core.dir/cmake_pch.hxx -o core/CMakeFiles/core.dir/src/Device.cpp.o -c /home/djoker/code/cpp/GlStuff/core/src/Device.cpp",
+  "file": "/home/djoker/code/cpp/GlStuff/core/src/Device.cpp"
+},
+{
+  "directory": "/home/djoker/code/cpp/GlStuff/build",
+  "command": "/usr/bin/c++ -I/home/djoker/code/cpp/GlStuff/core/include -I/home/djoker/code/cpp/GlStuff/core/src  -fexceptions -frtti -fno-strict-aliasing -O3 -march=native -mtune=native -O3 -DNDEBUG -Wextra -Wall -Wno-sign-compare -Wno-missing-field-initializers -Wundef -Wuninitialized -Wunused -Wno-unused-parameter -Wwrite-strings -Wchar-subscripts -funsigned-char -std=c++17 -Winvalid-pch -include /home/djoker/code/cpp/GlStuff/build/core/CMakeFiles/core.dir/cmake_pch.hxx -o core/CMakeFiles/core.dir/src/File.cpp.o -c /home/djoker/code/cpp/GlStuff/core/src/File.cpp",
+  "file": "/home/djoker/code/cpp/GlStuff/core/src/File.cpp"
+},
+{
+  "directory": "/home/djoker/code/cpp/GlStuff/build",
+  "command": "/usr/bin/c++ -I/home/djoker/code/cpp/GlStuff/core/include -I/home/djoker/code/cpp/GlStuff/core/src  -fexceptions -frtti -fno-strict-aliasing -O3 -march=native -mtune=native -O3 -DNDEBUG -Wextra -Wall -Wno-sign-compare -Wno-missing-field-initializers -Wundef -Wuninitialized -Wunused -Wno-unused-parameter -Wwrite-strings -Wchar-subscripts -funsigned-char -std=c++17 -Winvalid-pch -include /home/djoker/code/cpp/GlStuff/build/core/CMakeFiles/core.dir/cmake_pch.hxx -o core/CMakeFiles/core.dir/src/Input.cpp.o -c /home/djoker/code/cpp/GlStuff/core/src/Input.cpp",
+  "file": "/home/djoker/code/cpp/GlStuff/core/src/Input.cpp"
+},
+{
+  "directory": "/home/djoker/code/cpp/GlStuff/build",
+  "command": "/usr/bin/c++ -I/home/djoker/code/cpp/GlStuff/core/include -I/home/djoker/code/cpp/GlStuff/core/src  -fexceptions -frtti -fno-strict-aliasing -O3 -march=native -mtune=native -O3 -DNDEBUG -Wextra -Wall -Wno-sign-compare -Wno-missing-field-initializers -Wundef -Wuninitialized -Wunused -Wno-unused-parameter -Wwrite-strings -Wchar-subscripts -funsigned-char -std=c++17 -Winvalid-pch -include /home/djoker/code/cpp/GlStuff/build/core/CMakeFiles/core.dir/cmake_pch.hxx -o core/CMakeFiles/core.dir/src/Math.cpp.o -c /home/djoker/code/cpp/GlStuff/core/src/Math.cpp",
+  "file": "/home/djoker/code/cpp/GlStuff/core/src/Math.cpp"
+},
+{
+  "directory": "/home/djoker/code/cpp/GlStuff/build",
+  "command": "/usr/bin/c++ -I/home/djoker/code/cpp/GlStuff/core/include -I/home/djoker/code/cpp/GlStuff/core/src  -fexceptions -frtti -fno-strict-aliasing -O3 -march=native -mtune=native -O3 -DNDEBUG -Wextra -Wall -Wno-sign-compare -Wno-missing-field-initializers -Wundef -Wuninitialized -Wunused -Wno-unused-parameter -Wwrite-strings -Wchar-subscripts -funsigned-char -std=c++17 -Winvalid-pch -include /home/djoker/code/cpp/GlStuff/build/core/CMakeFiles/core.dir/cmake_pch.hxx -o core/CMakeFiles/core.dir/src/Mesh.cpp.o -c /home/djoker/code/cpp/GlStuff/core/src/Mesh.cpp",
+  "file": "/home/djoker/code/cpp/GlStuff/core/src/Mesh.cpp"
+},
+{
+  "directory": "/home/djoker/code/cpp/GlStuff/build",
+  "command": "/usr/bin/c++ -I/home/djoker/code/cpp/GlStuff/core/include -I/home/djoker/code/cpp/GlStuff/core/src  -fexceptions -frtti -fno-strict-aliasing -O3 -march=native -mtune=native -O3 -DNDEBUG -Wextra -Wall -Wno-sign-compare -Wno-missing-field-initializers -Wundef -Wuninitialized -Wunused -Wno-unused-parameter -Wwrite-strings -Wchar-subscripts -funsigned-char -std=c++17 -Winvalid-pch -include /home/djoker/code/cpp/GlStuff/build/core/CMakeFiles/core.dir/cmake_pch.hxx -o core/CMakeFiles/core.dir/src/Scene.cpp.o -c /home/djoker/code/cpp/GlStuff/core/src/Scene.cpp",
+  "file": "/home/djoker/code/cpp/GlStuff/core/src/Scene.cpp"
+},
+{
+  "directory": "/home/djoker/code/cpp/GlStuff/build",
+  "command": "/usr/bin/c++ -I/home/djoker/code/cpp/GlStuff/core/include -I/home/djoker/code/cpp/GlStuff/core/src  -fexceptions -frtti -fno-strict-aliasing -O3 -march=native -mtune=native -O3 -DNDEBUG -Wextra -Wall -Wno-sign-compare -Wno-missing-field-initializers -Wundef -Wuninitialized -Wunused -Wno-unused-parameter -Wwrite-strings -Wchar-subscripts -funsigned-char -std=c++17 -Winvalid-pch -include /home/djoker/code/cpp/GlStuff/build/core/CMakeFiles/core.dir/cmake_pch.hxx -o core/CMakeFiles/core.dir/src/Shader.cpp.o -c /home/djoker/code/cpp/GlStuff/core/src/Shader.cpp",
+  "file": "/home/djoker/code/cpp/GlStuff/core/src/Shader.cpp"
+},
+{
+  "directory": "/home/djoker/code/cpp/GlStuff/build",
+  "command": "/usr/bin/c++ -I/home/djoker/code/cpp/GlStuff/core/include -I/home/djoker/code/cpp/GlStuff/core/src  -fexceptions -frtti -fno-strict-aliasing -O3 -march=native -mtune=native -O3 -DNDEBUG -Wextra -Wall -Wno-sign-compare -Wno-missing-field-initializers -Wundef -Wuninitialized -Wunused -Wno-unused-parameter -Wwrite-strings -Wchar-subscripts -funsigned-char -std=c++17 -Winvalid-pch -include /home/djoker/code/cpp/GlStuff/build/core/CMakeFiles/core.dir/cmake_pch.hxx -o core/CMakeFiles/core.dir/src/Texture.cpp.o -c /home/djoker/code/cpp/GlStuff/core/src/Texture.cpp",
+  "file": "/home/djoker/code/cpp/GlStuff/core/src/Texture.cpp"
+},
+{
+  "directory": "/home/djoker/code/cpp/GlStuff/build",
+  "command": "/usr/bin/c++ -I/home/djoker/code/cpp/GlStuff/core/include -I/home/djoker/code/cpp/GlStuff/core/src  -fexceptions -frtti -fno-strict-aliasing -O3 -march=native -mtune=native -O3 -DNDEBUG -Wextra -Wall -Wno-sign-compare -Wno-missing-field-initializers -Wundef -Wuninitialized -Wunused -Wno-unused-parameter -Wwrite-strings -Wchar-subscripts -funsigned-char -std=c++17 -Winvalid-pch -include /home/djoker/code/cpp/GlStuff/build/core/CMakeFiles/core.dir/cmake_pch.hxx -o core/CMakeFiles/core.dir/src/Utils.cpp.o -c /home/djoker/code/cpp/GlStuff/core/src/Utils.cpp",
+  "file": "/home/djoker/code/cpp/GlStuff/core/src/Utils.cpp"
+},
+{
+  "directory": "/home/djoker/code/cpp/GlStuff/build",
+  "command": "/usr/bin/c++ -I/home/djoker/code/cpp/GlStuff/core/include -I/home/djoker/code/cpp/GlStuff/core/src  -fexceptions -frtti -fno-strict-aliasing -O3 -march=native -mtune=native -O3 -DNDEBUG -Wextra -Wall -Wno-sign-compare -Wno-missing-field-initializers -Wundef -Wuninitialized -Wunused -Wno-unused-parameter -Wwrite-strings -Wchar-subscripts -funsigned-char -std=c++17 -Winvalid-pch -include /home/djoker/code/cpp/GlStuff/build/core/CMakeFiles/core.dir/cmake_pch.hxx -o core/CMakeFiles/core.dir/src/glad.cpp.o -c /home/djoker/code/cpp/GlStuff/core/src/glad.cpp",
+  "file": "/home/djoker/code/cpp/GlStuff/core/src/glad.cpp"
+},
+{
+  "directory": "/home/djoker/code/cpp/GlStuff/build",
+  "command": "/usr/bin/c++ -I/home/djoker/code/cpp/GlStuff/core/include -I/home/djoker/code/cpp/GlStuff/core/src  -fexceptions -frtti -fno-strict-aliasing -O3 -march=native -mtune=native -O3 -DNDEBUG -Wextra -Wall -Wno-sign-compare -Wno-missing-field-initializers -Wundef -Wuninitialized -Wunused -Wno-unused-parameter -Wwrite-strings -Wchar-subscripts -funsigned-char -std=c++17 -Winvalid-pch -include /home/djoker/code/cpp/GlStuff/build/core/CMakeFiles/core.dir/cmake_pch.hxx -o core/CMakeFiles/core.dir/src/pch.cpp.o -c /home/djoker/code/cpp/GlStuff/core/src/pch.cpp",
+  "file": "/home/djoker/code/cpp/GlStuff/core/src/pch.cpp"
+},
+{
+  "directory": "/home/djoker/code/cpp/GlStuff/build",
+  "command": "/usr/bin/c++ -I/home/djoker/code/cpp/GlStuff/main/include -I/home/djoker/code/cpp/GlStuff/main/src -I/home/djoker/code/cpp/GlStuff/core/include -I/home/djoker/code/cpp/GlStuff/core/src -g -Wall -std=gnu++11 -Winvalid-pch -x c++-header -include /home/djoker/code/cpp/GlStuff/build/main/CMakeFiles/main.dir/cmake_pch.hxx -o main/CMakeFiles/main.dir/cmake_pch.hxx.gch -c /home/djoker/code/cpp/GlStuff/build/main/CMakeFiles/main.dir/cmake_pch.hxx.cxx",
+  "file": "/home/djoker/code/cpp/GlStuff/build/main/CMakeFiles/main.dir/cmake_pch.hxx.cxx"
+},
+{
+  "directory": "/home/djoker/code/cpp/GlStuff/build",
+  "command": "/usr/bin/c++ -I/home/djoker/code/cpp/GlStuff/main/include -I/home/djoker/code/cpp/GlStuff/main/src -I/home/djoker/code/cpp/GlStuff/core/include -I/home/djoker/code/cpp/GlStuff/core/src -g -Wall -std=gnu++11 -Winvalid-pch -include /home/djoker/code/cpp/GlStuff/build/main/CMakeFiles/main.dir/cmake_pch.hxx -o main/CMakeFiles/main.dir/src/main.cpp.o -c /home/djoker/code/cpp/GlStuff/main/src/main.cpp",
+  "file": "/home/djoker/code/cpp/GlStuff/main/src/main.cpp"
+},
+{
+  "directory": "/home/djoker/code/cpp/GlStuff/build",
+  "command": "/usr/bin/c++ -I/home/djoker/code/cpp/GlStuff/teste_scene/include -I/home/djoker/code/cpp/GlStuff/teste_scene/src -I/home/djoker/code/cpp/GlStuff/core/include -I/home/djoker/code/cpp/GlStuff/core/src -g -Wall -std=gnu++11 -Winvalid-pch -x c++-header -include /home/djoker/code/cpp/GlStuff/build/teste_scene/CMakeFiles/teste_scene.dir/cmake_pch.hxx -o teste_scene/CMakeFiles/teste_scene.dir/cmake_pch.hxx.gch -c /home/djoker/code/cpp/GlStuff/build/teste_scene/CMakeFiles/teste_scene.dir/cmake_pch.hxx.cxx",
+  "file": "/home/djoker/code/cpp/GlStuff/build/teste_scene/CMakeFiles/teste_scene.dir/cmake_pch.hxx.cxx"
+},
+{
+  "directory": "/home/djoker/code/cpp/GlStuff/build",
+  "command": "/usr/bin/c++ -I/home/djoker/code/cpp/GlStuff/teste_scene/include -I/home/djoker/code/cpp/GlStuff/teste_scene/src -I/home/djoker/code/cpp/GlStuff/core/include -I/home/djoker/code/cpp/GlStuff/core/src -g -Wall -std=gnu++11 -Winvalid-pch -include /home/djoker/code/cpp/GlStuff/build/teste_scene/CMakeFiles/teste_scene.dir/cmake_pch.hxx -o teste_scene/CMakeFiles/teste_scene.dir/src/main.cpp.o -c /home/djoker/code/cpp/GlStuff/teste_scene/src/main.cpp",
+  "file": "/home/djoker/code/cpp/GlStuff/teste_scene/src/main.cpp"
+},
+{
+  "directory": "/home/djoker/code/cpp/GlStuff/build",
+  "command": "/usr/bin/c++ -I/home/djoker/code/cpp/GlStuff/teste_shadow/include -I/home/djoker/code/cpp/GlStuff/teste_shadow/src -I/home/djoker/code/cpp/GlStuff/core/include -I/home/djoker/code/cpp/GlStuff/core/src -g -Wall -std=gnu++11 -Winvalid-pch -x c++-header -include /home/djoker/code/cpp/GlStuff/build/teste_shadow/CMakeFiles/teste_shadow.dir/cmake_pch.hxx -o teste_shadow/CMakeFiles/teste_shadow.dir/cmake_pch.hxx.gch -c /home/djoker/code/cpp/GlStuff/build/teste_shadow/CMakeFiles/teste_shadow.dir/cmake_pch.hxx.cxx",
+  "file": "/home/djoker/code/cpp/GlStuff/build/teste_shadow/CMakeFiles/teste_shadow.dir/cmake_pch.hxx.cxx"
+},
+{
+  "directory": "/home/djoker/code/cpp/GlStuff/build",
+  "command": "/usr/bin/c++ -I/home/djoker/code/cpp/GlStuff/teste_shadow/include -I/home/djoker/code/cpp/GlStuff/teste_shadow/src -I/home/djoker/code/cpp/GlStuff/core/include -I/home/djoker/code/cpp/GlStuff/core/src -g -Wall -std=gnu++11 -Winvalid-pch -include /home/djoker/code/cpp/GlStuff/build/teste_shadow/CMakeFiles/teste_shadow.dir/cmake_pch.hxx -o teste_shadow/CMakeFiles/teste_shadow.dir/src/Buffers.cpp.o -c /home/djoker/code/cpp/GlStuff/teste_shadow/src/Buffers.cpp",
+  "file": "/home/djoker/code/cpp/GlStuff/teste_shadow/src/Buffers.cpp"
+},
+{
+  "directory": "/home/djoker/code/cpp/GlStuff/build",
+  "command": "/usr/bin/c++ -I/home/djoker/code/cpp/GlStuff/teste_shadow/include -I/home/djoker/code/cpp/GlStuff/teste_shadow/src -I/home/djoker/code/cpp/GlStuff/core/include -I/home/djoker/code/cpp/GlStuff/core/src -g -Wall -std=gnu++11 -Winvalid-pch -include /home/djoker/code/cpp/GlStuff/build/teste_shadow/CMakeFiles/teste_shadow.dir/cmake_pch.hxx -o teste_shadow/CMakeFiles/teste_shadow.dir/src/main.cpp.o -c /home/djoker/code/cpp/GlStuff/teste_shadow/src/main.cpp",
+  "file": "/home/djoker/code/cpp/GlStuff/teste_shadow/src/main.cpp"
+}
+]
