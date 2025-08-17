@@ -134,12 +134,12 @@ void updateCascades(float nearClip, float farClip, const Vec3 & lightPos, const 
 		for (u32 i = 0; i < SHADOW_MAP_CASCADE_COUNT; i++) 
         {
             float splitDist =  cascadeSplits[i];
-
             Vec3 frustumCorners[8] = 
             {
 				  Vec3(-1.0f,  1.0f, -1.0f), Vec3( 1.0f,  1.0f, -1.0f), Vec3( 1.0f, -1.0f, -1.0f), Vec3(-1.0f, -1.0f, -1.0f),
                     Vec3(-1.0f,  1.0f,  1.0f), Vec3( 1.0f,  1.0f,  1.0f), Vec3( 1.0f, -1.0f,  1.0f), Vec3(-1.0f, -1.0f,  1.0f)
 			};
+
 
 			// Project frustum corners into world space
 			Mat4 invCam =Mat4::Inverse(projectionMatrix * viewMatrix);   
@@ -187,7 +187,7 @@ void updateCascades(float nearClip, float farClip, const Vec3 & lightPos, const 
 
 
             
-			Mat4 lightViewMatrix  = Mat4::LookAt(frustumCenter - lightDir * -(minExtents.z*0.5f), frustumCenter, Vec3(0.0f, 1.0f, 0.0f));
+			Mat4 lightViewMatrix  = Mat4::LookAt(frustumCenter - lightDir * -minExtents.z, frustumCenter, Vec3(0.0f, 1.0f, 0.0f));
 			Mat4 lightOrthoMatrix = Mat4::Ortho(minExtents.x, maxExtents.x, minExtents.y, maxExtents.y, 0.0f, orgin_z);
 
             // // Tamanho do mundo por texel
@@ -268,7 +268,7 @@ void main()
 );
 
 const char *fShader = GLSL(
-    const int NUM_CASCADES = 5;
+    const int NUM_CASCADES = 6;
 
     out vec4 FragColor;
 
@@ -385,7 +385,7 @@ float CalculateShadow(vec4 worldPosition, int idx)
 
         int cascadeIndex = 0;
        // NUM_CASCADES - 1; // Default to farthest cascade
-        for (int i = 0; i < NUM_CASCADES ; ++i) 
+        for (int i = 0; i < NUM_CASCADES ; i++) 
         {
             if (depthValue > cascadeshadows[i].splitDistance)  
             {
@@ -393,7 +393,7 @@ float CalculateShadow(vec4 worldPosition, int idx)
             }
         }
 
-      //  cascadeIndex = 0;
+        cascadeIndex = 3;
 
 
         vec3 dbg[5] = vec3[5](vec3(1,0,0), vec3(0,1,0), vec3(0,0,1), vec3(1,1,0), vec3(1,0,1));
@@ -429,9 +429,9 @@ float CalculateShadow(vec4 worldPosition, int idx)
 
          vec3 finalColor = mix(lighting, dbg[cascadeIndex], 0.3);
 
-          FragColor = vec4(finalColor, 1.0);
+      //    FragColor = vec4(finalColor, 1.0);
 
-       // FragColor = vec4(lighting, 1.0);
+        FragColor = vec4(lighting, 1.0);
     }
 
 
@@ -480,10 +480,15 @@ void LoadDepthShader()
 
 // Depth-only fragment shader
 const char* depthFragmentShader = GLSL(
+    
+     out vec4 FragColor;
     void main()
     {
         // OpenGL ES automatically writes to gl_FragDepth
         // No need for explicit depth output in ES 3.0
+
+        FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+
     }
 );
 
@@ -803,7 +808,7 @@ int main()
 
         shadowManager.Bind(1);  
         y = 0.0f;
-        renderQuad.Render(-0.8f,y,0.3f);
+        renderQuad.Render(-0.8f,y,0.35f);
 
         shadowManager.Bind(2);
         y = -0.35f;

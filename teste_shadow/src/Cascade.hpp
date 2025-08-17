@@ -8,7 +8,7 @@ struct Cascade
     Mat4 viewProjMatrix;
 
 };
-const int SHADOW_MAP_CASCADE_COUNT = 5;
+const int SHADOW_MAP_CASCADE_COUNT = 6;
 const unsigned int SHADOW_WIDTH = 1024;
 const unsigned int SHADOW_HEIGHT =1024;
 Cascade cascades[SHADOW_MAP_CASCADE_COUNT];
