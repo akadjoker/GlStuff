@@ -64,3 +64,9 @@
 2	687	1755459212581189434	teste_shadow/CMakeFiles/teste_shadow.dir/src/main.cpp.o	6bd72666985ebc56
 434	722	1755459212617190514	../bin/teste_scene	584e5df65e979097
 687	860	1755459212753194600	../bin/teste_shadow	86c041405273cb13
+2	518	1755459247410240102	teste_scene/CMakeFiles/teste_scene.dir/src/main.cpp.o	3adc96c40d77a83a
+2	569	1755459247458241557	main/CMakeFiles/main.dir/src/main.cpp.o	c8e1652565c193a9
+3	654	1755459247546244222	teste_shadow/CMakeFiles/teste_shadow.dir/src/main.cpp.o	6bd72666985ebc56
+518	756	1755459247646247251	../bin/teste_scene	584e5df65e979097
+569	794	1755459247682248341	../bin/main	bbb5d84ad30ff5a
+654	838	1755459247726249673	../bin/teste_shadow	86c041405273cb13
