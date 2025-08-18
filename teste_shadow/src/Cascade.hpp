@@ -8,7 +8,7 @@ struct Cascade
     Mat4 viewProjMatrix;
 
 };
-const int SHADOW_MAP_CASCADE_COUNT = 6;
+const int SHADOW_MAP_CASCADE_COUNT = 4;
 const unsigned int SHADOW_WIDTH = 1024;
 const unsigned int SHADOW_HEIGHT =1024;
 Cascade cascades[SHADOW_MAP_CASCADE_COUNT];
@@ -137,6 +137,7 @@ public:
         glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
         glClear(GL_DEPTH_BUFFER_BIT);
         glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
+     //   glEnable(GL_DEPTH_CLAMP_EXT);
         glEnable(GL_POLYGON_OFFSET_FILL);
         glPolygonOffset(2.0f, 4.0f);
     }
@@ -150,10 +151,12 @@ public:
     
 
     }
+
     void EndShadowPass()
     {
         glDisable(GL_POLYGON_OFFSET_FILL);
         glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+      //  glDisable(GL_DEPTH_CLAMP_EXT);
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glActiveTexture(GL_TEXTURE0 );
         glBindTexture(GL_TEXTURE_2D, 0);
@@ -189,7 +192,7 @@ public:
         }
         
    
-        shader->SetFloat("shadowMapSize", (float)SHADOW_WIDTH, (float)SHADOW_HEIGHT);
+       // shader->SetFloat("shadowMapSize", (float)SHADOW_WIDTH, (float)SHADOW_HEIGHT);
         shader->SetFloat("shadowStrength", 0.99f); //  (1.25–2.0)
         shader->SetFloat("shadowGamma",    0.55f); // 1.2–2.0: maior = mais escuro
     }

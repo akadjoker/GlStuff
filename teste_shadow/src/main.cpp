@@ -97,8 +97,8 @@ void updateCascades_(float nearClip, float farClip, const Vec3& lightDirInput, c
 
         // Armazena
         cascades[i].splitDepth = nearClip + splitDist * clipRange; // Positivo para compatibilidade
-        LogInfo("Cascade %d splitDist: %f, splitDepth: %f, minX: %f, maxX: %f, minY: %f, maxY: %f, minZ: %f, maxZ: %f",
-                i, splitDist, cascades[i].splitDepth, minX, maxX, minY, maxY, minZ, maxZ);
+       // LogInfo("Cascade %d splitDist: %f, splitDepth: %f, minX: %f, maxX: %f, minY: %f, maxY: %f, minZ: %f, maxZ: %f",
+      //          i, splitDist, cascades[i].splitDepth, minX, maxX, minY, maxY, minZ, maxZ);
         cascades[i].viewProjMatrix = lightOrthoMatrix * lightViewMatrix;
 
         lastSplitDist = cascadeSplits[i];
@@ -209,7 +209,7 @@ void updateCascades(float nearClip, float farClip, const Vec3 & lightPos, const 
 
 			// Store split distance and matrix in cascade
             cascades[i].splitDepth = (nearClip + splitDist * clipRange) ;
-            LogInfo("Cascade %d splitDepth: %f   orginZ: %f", i, cascades[i].splitDepth,   orgin_z);
+          //  LogInfo("Cascade %d splitDepth: %f   orginZ: %f", i, cascades[i].splitDepth,   orgin_z);
 			cascades[i].viewProjMatrix = lightOrthoMatrix * lightViewMatrix;
 
 			lastSplitDist = cascadeSplits[i];
@@ -268,7 +268,7 @@ void main()
 );
 
 const char *fShader = GLSL(
-    const int NUM_CASCADES = 6;
+    const int NUM_CASCADES = 4;
 
     out vec4 FragColor;
 
@@ -307,10 +307,33 @@ const char *fShader = GLSL(
 
    
 
- 
-float PCF5RotatedShadow(int idx, vec2 uv, float refDepth, float bias)
+    float PCF5RotatedShadow(int idx, vec2 uv, float refDepth, float bias)
+   {
+       // pega o texel real da textura desta cascata
+       vec2 texel = 1.0 / vec2(textureSize(shadowMap[idx], 0));
+
+       // amostras (cross “rodado” ~30°)
+       vec2 o0 = vec2(0.0);
+       vec2 o1 = vec2(-0.866,  0.5) * texel;
+       vec2 o2 = vec2(-0.866, -0.5) * texel;
+       vec2 o3 = vec2( 0.866, -0.5) * texel;
+       vec2 o4 = vec2( 0.866,  0.5) * texel;
+
+       float s = 0.0;
+       float d;
+
+       d = texture(shadowMap[idx], uv + o0).r; s += (refDepth - bias) > d ? 1.0 : 0.0;
+       d = texture(shadowMap[idx], uv + o1).r; s += (refDepth - bias) > d ? 1.0 : 0.0;
+       d = texture(shadowMap[idx], uv + o2).r; s += (refDepth - bias) > d ? 1.0 : 0.0;
+       d = texture(shadowMap[idx], uv + o3).r; s += (refDepth - bias) > d ? 1.0 : 0.0;
+       d = texture(shadowMap[idx], uv + o4).r; s += (refDepth - bias) > d ? 1.0 : 0.0;
+
+       return s / 5.0;
+   }
+
+float PCF5RotatedShadow_(int idx, vec2 uv, float refDepth, float bias)
 {
-    // offset isotrópico por texel (Horde usa 1.0/shadowMapSize)
+    // offset isotrópico por texel
     float off = 1.0 / max(shadowMapSize.x, shadowMapSize.y);
 
     // amostras em grelha ~30° (centro + 4 diagonais)
@@ -332,8 +355,31 @@ float PCF5RotatedShadow(int idx, vec2 uv, float refDepth, float bias)
     return s / 5.0;  // 0=sem sombra, 1=totalmente em sombra
 }
 
- 
+
 float CalculateShadow(vec4 worldPosition, int idx)
+{
+    // Projeta no espaço da luz
+    vec4 smp = cascadeshadows[idx].projViewMatrix * worldPosition;
+    vec3 proj = smp.xyz / max(smp.w, 1e-6);
+    proj = proj * 0.5 + 0.5;
+
+    // Clamps leves para reduzir numéricos nas cascatas longas
+   // proj.xy = clamp(proj.xy, vec2(0.001), vec2(0.999));
+  //  proj.z  = clamp(proj.z, 0.0, 0.999999);
+
+    // Bias dependente da inclinação + cascata
+    vec3 n = normalize(Normal);
+    vec3 L = normalize(-lightDir);
+    float NdotL = max(dot(n, L), 0.0);
+
+    float constBias = 0.0035 + 0.0005 * float(idx);
+    float slopeBias = 0.03   + 0.005  * float(idx);
+    float bias = constBias + slopeBias * (1.0 - NdotL);
+
+    return PCF5RotatedShadow(idx, proj.xy, proj.z, bias);
+}
+
+float CalculateShadow_(vec4 worldPosition, int idx)
 {
     // projetar para o espaço do shadow map da cascata
     vec4 smp = cascadeshadows[idx].projViewMatrix * worldPosition;
@@ -358,8 +404,86 @@ float CalculateShadow(vec4 worldPosition, int idx)
     return PCF5RotatedShadow(idx, proj.xy, proj.z, bias);
 }
 
+    float CalcShadowFactor(vec4 worldPosition,int CascadeIndex)
+    {
 
-         
+        vec4 LightSpacePos = cascadeshadows[CascadeIndex].projViewMatrix * worldPosition;
+
+        vec3 ProjCoords = LightSpacePos.xyz / LightSpacePos.w;
+
+        vec2 UVCoords;
+        UVCoords.x = 0.5 * ProjCoords.x + 0.5;
+        UVCoords.y = 0.5 * ProjCoords.y + 0.5;
+
+        float z = 0.5 * ProjCoords.z + 0.5;
+        float Depth = texture(shadowMap[CascadeIndex], UVCoords).x;
+
+        if (Depth > z + 0.00001)
+            return 0.5;
+        else
+            return 1.0;
+    }
+
+    float CalcShadowFactorPCF(vec4 worldPosition, int CascadeIndex)
+    {
+        vec4  LightSpacePos = cascadeshadows[CascadeIndex].projViewMatrix * worldPosition;
+        vec3  ProjCoords    = LightSpacePos.xyz / max(LightSpacePos.w, 1e-6);
+
+        // NDC -> [0,1]
+        vec2  UVCoords = ProjCoords.xy * 0.5 + 0.5;
+        float z        = ProjCoords.z  * 0.5 + 0.5;
+
+        // Clamps leves para evitar ruído/saídas minúsculas
+        UVCoords = clamp(UVCoords, vec2(0.001), vec2(0.999));
+        z        = clamp(z, 0.0, 0.999999);
+
+        // Bias simples (mantém a lógica do teu shader: luz = menor sombra)
+        //  dependente da cascata e inclinação
+        //float bias = 0.0008;
+
+        vec3 n = normalize(Normal);
+        vec3 L = normalize(-lightDir);
+        float NdotL = max(dot(n, L), 0.0);
+
+        // um bocadinho mais de bias nas cascatas distantes
+        float constBias = 0.0008 + 0.0003 * float(CascadeIndex);
+        float slopeBias = 0.0030 + 0.0010 * float(CascadeIndex);
+        float bias = constBias + slopeBias * (1.0 - NdotL);
+
+        // Tamanho real do texel da camada (dispensa uniform)
+        vec2 texel = 1.0 / vec2(textureSize(shadowMap[CascadeIndex], 0));
+
+        // 5 amostras (centro + cruz “rodada” estável)
+        vec2 o0 = vec2(0.0);
+        vec2 o1 = vec2(-0.866,  0.5) * texel;
+        vec2 o2 = vec2(-0.866, -0.5) * texel;
+        vec2 o3 = vec2( 0.866, -0.5) * texel;
+        vec2 o4 = vec2( 0.866,  0.5) * texel;
+
+        float s = 0.0;
+
+        //  retorno: 1.0 = sombra, ~0.5 = luz
+
+        float Depth;
+
+        Depth = texture(shadowMap[CascadeIndex], UVCoords + o0).r;
+        s += (Depth > z + bias) ? 0.5 : 1.0;
+
+        Depth = texture(shadowMap[CascadeIndex], UVCoords + o1).r;
+        s += (Depth > z + bias) ? 0.5 : 1.0;
+
+        Depth = texture(shadowMap[CascadeIndex], UVCoords + o2).r;
+        s += (Depth > z + bias) ? 0.5 : 1.0;
+
+        Depth = texture(shadowMap[CascadeIndex], UVCoords + o3).r;
+        s += (Depth > z + bias) ? 0.5 : 1.0;
+
+        Depth = texture(shadowMap[CascadeIndex], UVCoords + o4).r;
+        s += (Depth > z + bias) ? 0.5 : 1.0;
+
+        return s / 5.0;  // média: gradual, sem “só 0 e 1”
+    }
+
    
 
     void main() 
@@ -393,10 +517,11 @@ float CalculateShadow(vec4 worldPosition, int idx)
             }
         }
 
-        cascadeIndex = 3;
+      cascadeIndex = clamp(cascadeIndex, 0, NUM_CASCADES - 1);
 
 
-        vec3 dbg[5] = vec3[5](vec3(1,0,0), vec3(0,1,0), vec3(0,0,1), vec3(1,1,0), vec3(1,0,1));
+
+        vec3 dbg[5] = vec3[5](vec3(1,0,0), vec3(0,1,0), vec3(0,1,1), vec3(1,1,0), vec3(1,0,1));
       //  FragColor = vec4(dbg[cascadeIndex], 1.0);
  
 
@@ -414,7 +539,9 @@ float CalculateShadow(vec4 worldPosition, int idx)
         vec3 specular = spec * lightColor;
 
         // Shadow calculation
-        float shadow = CalculateShadow(outWorldPosition, cascadeIndex);
+     //   float shadow = CalculateShadow(outWorldPosition, cascadeIndex);
+       //float shadow = CalcShadowFactor(outWorldPosition, cascadeIndex);
+        float shadow = CalcShadowFactorPCF(outWorldPosition, cascadeIndex);
         shadow = clamp(shadow * shadowStrength, 0.0, 5.0);
         float visibility = pow(1.0 - shadow, shadowGamma);
 
@@ -429,7 +556,7 @@ float CalculateShadow(vec4 worldPosition, int idx)
 
          vec3 finalColor = mix(lighting, dbg[cascadeIndex], 0.3);
 
-      //    FragColor = vec4(finalColor, 1.0);
+       //   FragColor = vec4(finalColor, 1.0);
 
         FragColor = vec4(lighting, 1.0);
     }
