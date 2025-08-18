@@ -670,13 +670,14 @@ void Scene::Render()
 
 void Scene::RenderDepth(Shader* shader) 
 {
-    glDisable(GL_CULL_FACE);
-    //  glCullFace(GL_FRONT);
+    glEnable(GL_CULL_FACE);
+    //glDisable(GL_CULL_FACE);
+    glCullFace(GL_FRONT);
     for (auto node : _nodes)
     {
         node->RenderDepth( shader );
     }
-    glEnable(GL_CULL_FACE);
+
     glCullFace(GL_BACK);
 }
 
